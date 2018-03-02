@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ian's page</title>
+</head>
+<body>
+	<p>This is ian's page. <a href='/'>return to the home page</a></p>
+	<p>His full name is actually Ian {{middle_name}} {{last_name}}</p>
+	<div>
+	{% for room in rooms %}
+		<p>{{room.owner}}</p>
+		<p>{{room.level}}</p>
+		<p>{{room.occupants}}</p>
+	{% endfor %}
+	</div>
+</body>
+</html>
