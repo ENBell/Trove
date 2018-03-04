@@ -1,13 +1,28 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Ian's page</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
+	<h1>{{request.get_full_path}}</h1>
+	<h1>Ian's Page. Testing shiz out</h1>
 	<p>This is ian's page. <a href='/'>return to the home page</a></p>
-	<p>His full name is actually Ian {{middle_name}} {{last_name}}</p>
+	<p>His full name is actually 	
+	{% if request.path == '/ian' %}
+	Ian 
+	{% elif request.path == '/tara'  %}
+	Tara
+	{% endif %}
+	{{middle_name}} {{last_name}}</p>
 	<div>
 	{% for room in rooms %}
+		{% if room.name %}
+		<p>{{room.name}}</p>			
+		{% endif %}
 		<p>{{room.owner}}</p>
 		<p>{{room.level}}</p>
 		<p>{{room.occupants}}</p>
@@ -15,3 +30,4 @@
 	</div>
 </body>
 </html>
+
